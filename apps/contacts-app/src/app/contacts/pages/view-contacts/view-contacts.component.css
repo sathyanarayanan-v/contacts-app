@@ -1,0 +1,78 @@
+.view_contacts_container {
+  margin-top: 3%;
+  width: 94%;
+  height: 80vh;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.16);
+  background-color: white;
+  margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+}
+.contact_list_header {
+  background-color: #eff0f2;
+  height: 70px;
+  margin-top: 30px;
+  display: flex;
+}
+.list_items {
+  margin-top: 2.5%;
+}
+.contacts_container {
+  margin-top: 20px;
+  height: 65vh;
+}
+.contacts {
+  margin: 4px;
+  height: 80px;
+  border-radius: 6px;
+  display: flex;
+  border: 1px solid #eff0f2;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+}
+.contacts:hover{
+    border: 1px solid #1a73e8;
+    background-color: #f4f7fb;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1) !important;
+}
+.check_box_list_container {
+  margin-left: 1%;
+  margin-right: 3%;
+}
+.contact_name_container {
+  width: 400px;
+  margin-right: 10px;
+}
+.contact_email_container {
+  width: 500px;
+  margin-right: 5px;
+}
+.contact_number_container {
+  width: 180px;
+}
+.action_contact_container{
+    width:140px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.delete_icon{
+    color:red;
+}
+.eye_icon{
+   color: #1a73e8;
+}
+.header_items {
+  margin-top: 2%;
+}
+.check_box_container {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.contact_name_header_container {
+  margin-right: 30%;
+}
+.contact_number_header_container {
+  margin-right: 6%;
+  margin-left: 30%;
+}

@@ -15,6 +15,12 @@ export const initialState: ContactsState = {
 
 
 export const contactReducer = createReducer(
-  initialState
+  initialState,
+  on(ContactsActions.loadContactsSuccess,(state,{contacts})=> {
+    return {
+      ...state,
+      contacts
+    }
+  })
 );
 

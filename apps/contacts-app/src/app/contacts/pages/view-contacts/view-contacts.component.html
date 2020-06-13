@@ -1,2 +1,79 @@
 <contacts-app-header></contacts-app-header>
-<p>Contacts works</p>
+<div class="view_contacts_container">
+  <div class="contact_list_header">
+    <div class="check_box_container header_items">
+      <input
+        type="checkbox"
+        class="checkBox"
+        name=""
+        id=""
+        (change)="onHeaderChecked()"
+        [checked]="default_checked_value_header"
+      />
+    </div>
+    <div class="contact_name_header_container header_items">
+      <p>Name</p>
+    </div>
+    <div class="contact_email_header_container header_items">
+      <p>E-mail</p>
+    </div>
+    <div class="contact_number_header_container header_items">
+      <p>Phone Number</p>
+    </div>
+    <div class="action_header_container header_items">
+      <p>Actions</p>
+    </div>
+  </div>
+  <div class="contacts_container">
+    <div class="contacts">
+      <div class="check_box_list_container list_items">
+        <input
+          type="checkbox"
+          class="checkBox"
+          name=""
+          id=""
+          (change)="onHeaderChecked()"
+          [checked]="default_checked_value_header"
+        />
+      </div>
+      <div class="contact_name_container list_items">
+        <p>Sathyanarayanan.V</p>
+      </div>
+      <div class="contact_email_container list_items">
+        <p>svvsathyanarayanan@gmail.com</p>
+      </div>
+      <div class="contact_number_container list_items">
+        <p>+917667936303</p>
+      </div>
+      <div class="action_contact_container list_items">
+        <i class="far fa-trash-alt delete_icon" (click)="onDeleteContactClicked('')"></i>
+        <i class="far fa-eye eye_icon" (click)="onViewContactClicked('')"></i>
+      </div>
+    </div>
+    <div class="contacts">
+      <div class="check_box_list_container list_items">
+        <input
+          type="checkbox"
+          class="checkBox"
+          name=""
+          id=""
+          (change)="onHeaderChecked()"
+          [checked]="default_checked_value_header"
+        />
+      </div>
+      <div class="contact_name_container list_items">
+        <p>Harinisri Thirugnanam</p>
+      </div>
+      <div class="contact_email_container list_items">
+        <p>harini0397@gmail.com</p>
+      </div>
+      <div class="contact_number_container list_items">
+        <p>+918110081710</p>
+      </div>
+      <div class="action_contact_container list_items">
+        <i class="far fa-trash-alt delete_icon"></i>
+        <i class="far fa-eye eye_icon"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,10 +6,12 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Get()
+  getData() {
+    return {
+      message:'If you are seeing this, you are trying to view the contacts app api from browser.'
+    }
   }
 }

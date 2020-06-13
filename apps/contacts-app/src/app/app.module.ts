@@ -7,7 +7,8 @@ import { AppStoreModule } from './store/store.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { AppRoutingModule } from './app-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-
+import {SharedModule} from '@contacts-app/shared'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,6 +16,8 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     HttpClientModule,
     AppStoreModule,
+    SharedModule,
+    BrowserAnimationsModule,
     ContactsModule,
     EffectsModule.forRoot([]),
   ],

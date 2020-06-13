@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@contacts-app/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@contacts-app/shared": ["libs/shared/src/index.ts"],
+      "@contacts-app/api-interfaces":["libs/shared/src/lib/api-interfaces"]
     }
   },
   "exclude": ["node_modules", "tmp"]

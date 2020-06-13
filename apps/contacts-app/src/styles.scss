@@ -9,3 +9,14 @@ $color_success: #50a948;
     padding: 0;
     font-family: $font_primary;
   }
+  body{
+    background-color: #fafafa;
+  }
+  .red_snackbar {
+    background: #e2543a;
+    color: #fafafa;
+  }
+  .red_snackbar button {
+    color: white;
+    font-weight: bold;
+  }

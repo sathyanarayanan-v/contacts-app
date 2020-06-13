@@ -5,7 +5,7 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
+import * as dotenv from 'dotenv'
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -17,5 +17,5 @@ async function bootstrap() {
     Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
   });
 }
-
+dotenv.config()
 bootstrap();

@@ -6,6 +6,7 @@ import { contactReducer } from './+state/reducer/contacts.reducer';
 import { StoreModule } from '@ngrx/store';
 import { ViewContactsComponent } from './pages/view-contacts/view-contacts.component';
 import { ContactsAppCommonModule } from '../common/common.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -15,8 +16,8 @@ import { ContactsAppCommonModule } from '../common/common.module';
     CommonModule,
     EffectsModule.forFeature([ContactsEffects]),
     StoreModule.forFeature('contatState', contactReducer),
-    ContactsAppCommonModule
-
+    ContactsAppCommonModule,
+    MatSnackBarModule
   ]
 })
 export class ContactsModule { }
