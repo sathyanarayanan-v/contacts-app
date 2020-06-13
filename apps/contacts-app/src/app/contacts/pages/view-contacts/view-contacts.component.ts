@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IContact } from '@contacts-app/api-interfaces';
 import * as ContactActions from '../../+state/actions';
 import { Store } from '@ngrx/store';
@@ -7,20 +7,26 @@ import { Subscription } from 'rxjs';
 import { contactsQuery } from '../../+state/selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteContactComponent } from '../../components/delete-contact/delete-contact.component';
+import { ContactService } from '../../contacts.service';
 @Component({
   selector: 'contacts-app-view-contacts',
   templateUrl: './view-contacts.component.html',
   styleUrls: ['./view-contacts.component.css'],
 })
-export class ViewContactsComponent implements OnInit {
+export class ViewContactsComponent implements OnInit, OnDestroy {
   default_checked_value_header = false;
-  constructor(private store: Store<AppState>, private dialog: MatDialog) {}
-  subscription: Subscription;
+  constructor(
+    private store: Store<AppState>,
+    private dialog: MatDialog,
+    private contactService: ContactService
+  ) {}
+  subscription = new Subscription();
   contacts: Array<IContact>;
   selected_contacts: Array<string> = [];
+  contact_name: string;
   ngOnInit(): void {
     this.store.dispatch(ContactActions.loadContacts());
-    this.subscription = this.store
+    const sub1 = this.store
       .select(contactsQuery.getContacts)
       .subscribe((data) => {
         if (!data) {
@@ -30,6 +36,12 @@ export class ViewContactsComponent implements OnInit {
           console.log(this.contacts);
         }
       });
+    const sub2 = this.contactService.searchTextObserver.subscribe((data) => {
+      this.contact_name = data;
+    });
+
+    this.subscription.add(sub1);
+    this.subscription.add(sub2);
   }
   onListChecked(_id: string) {
     if (this.selected_contacts.includes(_id)) {
@@ -58,5 +70,10 @@ export class ViewContactsComponent implements OnInit {
   onDeleteContactClicked(_id: string) {
     this.store.dispatch(ContactActions.selectContacts({ ids: [_id] }));
     this.dialog.open(DeleteContactComponent);
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription.unsubscribe();
   }
 }

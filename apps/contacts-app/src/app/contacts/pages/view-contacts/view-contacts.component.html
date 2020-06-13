@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="contacts_container">
-    <div class="contacts" *ngFor="let contact of contacts">
+    <div class="contacts" *ngFor="let contact of contacts | filterContact:contact_name">
       <div class="check_box_list_container list_items">
         <input
           type="checkbox"
