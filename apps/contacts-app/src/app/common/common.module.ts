@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CommonDialogComponent } from './components/common-dialog/common-dialog.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CommonDialogComponent],
   imports: [
     CommonModule
   ]

@@ -25,7 +25,9 @@
               "apps/contacts-app/src/favicon.ico",
               "apps/contacts-app/src/assets"
             ],
-            "styles": ["apps/contacts-app/src/styles.scss"],
+            "styles": [
+              "apps/contacts-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +86,10 @@
               "apps/contacts-app/tsconfig.app.json",
               "apps/contacts-app/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/contacts-app/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/contacts-app/**"
+            ]
           }
         },
         "test": {
@@ -119,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/contacts-app-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/contacts-app-e2e/**"]
+            "tsConfig": [
+              "apps/contacts-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/contacts-app-e2e/**"
+            ]
           }
         }
       }
@@ -138,7 +148,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -167,7 +179,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**"
+            ]
           }
         },
         "test": {
@@ -193,7 +208,10 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**"
+            ]
           }
         },
         "test": {
@@ -208,7 +226,7 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@ngrx/schematics"
   },
   "schematics": {
     "@nrwl/angular:application": {
