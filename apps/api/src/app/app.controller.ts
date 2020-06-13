@@ -1,9 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-
-import { Message } from '@contacts-app/api-interfaces';
-
-import { AppService } from './app.service';
-
 @Controller()
 export class AppController {
   constructor() {}

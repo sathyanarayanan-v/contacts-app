@@ -7,7 +7,19 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import * as dotenv from 'dotenv'
 import { AppModule } from './app/app.module';
-
+import * as mongoose from 'mongoose'
+export const mongooseConnection = mongoose.connect(process.env.DB_URL, {
+  useFindAndModify: false,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+},(error) => {
+  if(error){
+    console.log(`Error connecting to database because of ${error}`)
+  }else{
+    console.log('Successfully connected to database.')
+  }
+});
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';

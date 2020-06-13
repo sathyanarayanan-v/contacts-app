@@ -10,3 +10,7 @@ export interface IContact{
   company?:string;
   title?:string;
 }
+export interface IErrorMessage{
+  error:boolean,
+  message:string
+}
