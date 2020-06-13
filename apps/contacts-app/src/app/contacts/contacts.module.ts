@@ -7,17 +7,20 @@ import { StoreModule } from '@ngrx/store';
 import { ViewContactsComponent } from './pages/view-contacts/view-contacts.component';
 import { ContactsAppCommonModule } from '../common/common.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DeleteContactComponent } from './components/delete-contact/delete-contact.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
-  declarations: [ViewContactsComponent],
+  declarations: [ViewContactsComponent, DeleteContactComponent],
   imports: [
     CommonModule,
     EffectsModule.forFeature([ContactsEffects]),
     StoreModule.forFeature('contactState', contactReducer),
     ContactsAppCommonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class ContactsModule { }

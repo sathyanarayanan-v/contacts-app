@@ -10,3 +10,4 @@ export const loadContactsFailure = createAction(
   '[CONTACTS] LOAD CONTACTS FAILURE',
   props<{ error: any }>()
 );
+export const selectContacts = createAction('[CONTACTS] SELECT CONTACTS TO DELETE',props<{ids:Array<string>}>())

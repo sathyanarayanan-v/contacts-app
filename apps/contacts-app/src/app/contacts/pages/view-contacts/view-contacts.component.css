@@ -61,6 +61,7 @@
 }
 .delete_icon{
     color:red;
+    cursor: pointer;
 }
 .eye_icon{
    color: #1a73e8;

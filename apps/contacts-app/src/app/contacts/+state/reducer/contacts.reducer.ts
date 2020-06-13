@@ -6,11 +6,13 @@ export const contactsFeatureKey = 'contacts';
 
 export interface ContactsState {
 contacts:Array<IContact>
+selectedContacts:Array<string>
 
 }
 
 export const initialState: ContactsState = {
-  contacts:[]
+  contacts:[],
+  selectedContacts:[]
 };
 
 
@@ -20,6 +22,12 @@ export const contactReducer = createReducer(
     return {
       ...state,
       contacts
+    }
+  }),
+  on(ContactsActions.selectContacts,(state,{ids})=>{
+    return {
+      ...state,
+      selectedContacts:ids
     }
   })
 );

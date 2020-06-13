@@ -2,6 +2,7 @@ export interface Message {
   message: string;
 }
 export interface IContact{
+  _id?:string;
   name?:string;
   number?:string;
   email?:string;
