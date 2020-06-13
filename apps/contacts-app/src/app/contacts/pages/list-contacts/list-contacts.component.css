@@ -31,10 +31,10 @@
   margin-right: 25px;
   margin-bottom: 10px;
 }
-.contacts:hover{
-    border: 1px solid #1a73e8;
-    background-color: #f4f7fb;
-    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1) !important;
+.contacts:hover {
+  border: 1px solid #1a73e8;
+  background-color: #f4f7fb;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1) !important;
 }
 .check_box_list_container {
   margin-left: 1%;
@@ -44,7 +44,7 @@
   width: 400px;
   margin-right: 10px;
 }
-.header_icon{
+.header_icon {
   margin-left: 4px;
 }
 .contact_email_container {
@@ -54,17 +54,18 @@
 .contact_number_container {
   width: 180px;
 }
-.action_contact_container{
-    width:140px;
-    display: flex;
-    justify-content: space-evenly;
+.action_contact_container {
+  width: 140px;
+  display: flex;
+  justify-content: space-evenly;
 }
-.delete_icon{
-    color:red;
-    cursor: pointer;
+.delete_icon {
+  color: red;
+  cursor: pointer;
 }
-.eye_icon{
-   color: #1a73e8;
+.eye_icon {
+  color: #1a73e8;
+  cursor: pointer;
 }
 .header_items {
   margin-top: 2%;
@@ -77,6 +78,10 @@
   margin-right: 30%;
 }
 .contact_number_header_container {
-  margin-right: 7%;
+  margin-right: 8%;
   margin-left: 28%;
+}
+.update_icon {
+  cursor: pointer;
+  color: #1a73e8;
 }

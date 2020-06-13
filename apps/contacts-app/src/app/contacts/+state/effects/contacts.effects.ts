@@ -10,7 +10,7 @@ import {SnackbarService} from '@contacts-app/shared'
 @Injectable()
 export class ContactsEffects {
   constructor(private actions$: Actions, private snackbar: SnackbarService,private contactService:ContactService) {}
-  fetchQuotes = createEffect(() => {
+  fetchContacts = createEffect(() => {
     return this.actions$.pipe(
       ofType(ContactsActions.loadContacts),
       switchMap(() => {
@@ -26,6 +26,27 @@ export class ContactsEffects {
               'red_snackbar'
             );
             return of(ContactsActions.loadContactsFailure({ error }));
+          })
+        );
+      })
+    );
+  });
+  deleteContacts = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ContactsActions.deleteContacts),
+      switchMap(({ids}) => {
+        return this.contactService.deleteContacts(ids).pipe(
+          map((res: any) =>
+            ContactsActions.deleteContactsSuccess({ contacts: res })
+          ),
+          catchError((error) => {
+            this.snackbar.showSnackbar(
+              'Unable to delete contacts, please try again',
+              'OK',
+              5000,
+              'red_snackbar'
+            );
+            return of(ContactsActions.deleteContactFailure({ error }));
           })
         );
       })

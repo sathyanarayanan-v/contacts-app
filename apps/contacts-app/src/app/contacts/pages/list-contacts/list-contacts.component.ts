@@ -58,6 +58,9 @@ export class ListContactsComponent implements OnInit, OnDestroy {
     this.default_checked_value_header =
       this.selected_contacts.length === this.contacts.length;
   }
+  updateContactClicked(contact:any) {
+    this.store.dispatch(ContactActions.selectContacts({ids:contact}))
+  }
   deleteContacts() {
     this.store.dispatch(
       ContactActions.selectContacts({ ids: this.selected_contacts })

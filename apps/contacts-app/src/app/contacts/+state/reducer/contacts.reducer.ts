@@ -5,30 +5,33 @@ import { IContact } from '@contacts-app/api-interfaces';
 export const contactsFeatureKey = 'contacts';
 
 export interface ContactsState {
-contacts:Array<IContact>
-selectedContacts:Array<string>
-
+  contacts: Array<IContact>;
+  selectedContacts: Array<string>;
 }
 
 export const initialState: ContactsState = {
-  contacts:[],
-  selectedContacts:[]
+  contacts: [],
+  selectedContacts: [],
 };
-
 
 export const contactReducer = createReducer(
   initialState,
-  on(ContactsActions.loadContactsSuccess,(state,{contacts})=> {
+  on(ContactsActions.loadContactsSuccess, (state, { contacts }) => {
     return {
       ...state,
-      contacts
-    }
+      contacts,
+    };
   }),
-  on(ContactsActions.selectContacts,(state,{ids})=>{
+  on(ContactsActions.selectContacts, (state, { ids }) => {
     return {
       ...state,
-      selectedContacts:ids
-    }
+      selectedContacts: ids,
+    };
+  }),
+  on(ContactsActions.deleteContactsSuccess, (state, { contacts }) => {
+    return {
+      ...state,
+      contacts,
+    };
   })
 );
-

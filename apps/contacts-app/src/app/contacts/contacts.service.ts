@@ -9,11 +9,12 @@ export class ContactService {
   constructor(private httpService: HttpService) {}
 
   private searchTerm: Subject<any> = new Subject<any>();
-  public searchTextObserver: Observable<
-    any
-  > = this.searchTerm.asObservable();
+  public searchTextObserver: Observable<any> = this.searchTerm.asObservable();
 
   loadContacts = () => this.httpService.get('contacts');
 
-  emitSearchContactValue = (name: string) => this.searchTerm.next(name);
+  deleteContacts = (ids: Array<string>) =>
+    this.httpService.post('contacts/delete', ids);
+  
+    emitSearchContactValue = (name: string) => this.searchTerm.next(name);
 }
