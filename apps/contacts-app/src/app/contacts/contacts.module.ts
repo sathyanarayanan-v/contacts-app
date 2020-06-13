@@ -5,6 +5,7 @@ import { ContactsEffects } from './+state/effects/contacts.effects';
 import { contactReducer } from './+state/reducer/contacts.reducer';
 import { StoreModule } from '@ngrx/store';
 import { ViewContactsComponent } from './pages/view-contacts/view-contacts.component';
+import { ContactsAppCommonModule } from '../common/common.module';
 
 
 
@@ -13,7 +14,8 @@ import { ViewContactsComponent } from './pages/view-contacts/view-contacts.compo
   imports: [
     CommonModule,
     EffectsModule.forFeature([ContactsEffects]),
-    StoreModule.forFeature('contatState', contactReducer)
+    StoreModule.forFeature('contatState', contactReducer),
+    ContactsAppCommonModule
 
   ]
 })
