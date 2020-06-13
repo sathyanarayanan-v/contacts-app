@@ -8,12 +8,13 @@ import { contactsQuery } from '../../+state/selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteContactComponent } from '../../components/delete-contact/delete-contact.component';
 import { ContactService } from '../../contacts.service';
+import { ViewContactComponent } from '../view-contact/view-contact.component';
 @Component({
-  selector: 'contacts-app-view-contacts',
-  templateUrl: './view-contacts.component.html',
-  styleUrls: ['./view-contacts.component.css'],
+  selector: 'contacts-app-list-contacts',
+  templateUrl: './list-contacts.component.html',
+  styleUrls: ['./list-contacts.component.css'],
 })
-export class ViewContactsComponent implements OnInit, OnDestroy {
+export class ListContactsComponent implements OnInit, OnDestroy {
   default_checked_value_header = false;
   constructor(
     private store: Store<AppState>,
@@ -42,6 +43,9 @@ export class ViewContactsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(sub1);
     this.subscription.add(sub2);
+  }
+  viewContact(contact: IContact) {
+    this.dialog.open(ViewContactComponent, { width: '500px', height: '500px' });
   }
   onListChecked(_id: string) {
     if (this.selected_contacts.includes(_id)) {

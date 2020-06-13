@@ -1,1 +1,21 @@
-<p>common-dialog works!</p>
+<div mat-mat-dialog-content class="common_dialog">
+    <div class="button_container">
+        <button
+        *ngIf="confirm"
+        [mat-dialog-close]="onDialogYes"
+        (click)="onClick()"
+        class="btn_delete pointer"
+      >
+        <span> {{confirm}} </span>
+      </button>
+      <button
+      *ngIf="cancel"
+      [mat-dialog-close]="onDialogYes"
+      (click)="onNoClick()"
+      class="btn_delete pointer"
+    >
+      <span> {{cancel}} </span>
+    </button>
+    </div>
+    <ng-content></ng-content>
+</div>

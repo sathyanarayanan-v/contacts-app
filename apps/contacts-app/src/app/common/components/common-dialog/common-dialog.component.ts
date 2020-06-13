@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'contacts-app-common-dialog',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./common-dialog.component.scss']
 })
 export class CommonDialogComponent implements OnInit {
-
-  constructor() { }
+  onDialogYes:boolean
+  @Input() title: string;
+  @Input() confirm: string;
+  @Input() cancel: string;
+  @Output() buttonClicked = new EventEmitter<string>();
+  constructor(private dialogRef:MatDialogRef<CommonDialogComponent>) { }
 
   ngOnInit(): void {
+    console.log('values',this.confirm,this.cancel)
   }
-
+  onClick(){
+this.buttonClicked.emit()
+  }
+  onNoClick(){
+    this.dialogRef.close()
+  }
 }
