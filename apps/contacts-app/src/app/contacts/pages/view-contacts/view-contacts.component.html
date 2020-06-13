@@ -10,6 +10,8 @@
         (change)="onHeaderChecked()"
         [checked]="default_checked_value_header"
       />
+      <i class="far fa-trash-alt delete_icon header_icon"></i>
+
     </div>
     <div class="contact_name_header_container header_items">
       <p>Name</p>
@@ -25,7 +27,7 @@
     </div>
   </div>
   <div class="contacts_container">
-    <div class="contacts">
+    <div class="contacts" *ngFor="let contact of contacts">
       <div class="check_box_list_container list_items">
         <input
           type="checkbox"
@@ -37,38 +39,13 @@
         />
       </div>
       <div class="contact_name_container list_items">
-        <p>Sathyanarayanan.V</p>
+        <p>{{contact.name | titlecase}}</p>
       </div>
       <div class="contact_email_container list_items">
-        <p>svvsathyanarayanan@gmail.com</p>
+        <p>{{contact.email}}</p>
       </div>
       <div class="contact_number_container list_items">
-        <p>+917667936303</p>
-      </div>
-      <div class="action_contact_container list_items">
-        <i class="far fa-trash-alt delete_icon" (click)="onDeleteContactClicked('')"></i>
-        <i class="far fa-eye eye_icon" (click)="onViewContactClicked('')"></i>
-      </div>
-    </div>
-    <div class="contacts">
-      <div class="check_box_list_container list_items">
-        <input
-          type="checkbox"
-          class="checkBox"
-          name=""
-          id=""
-          (change)="onHeaderChecked()"
-          [checked]="default_checked_value_header"
-        />
-      </div>
-      <div class="contact_name_container list_items">
-        <p>Harinisri Thirugnanam</p>
-      </div>
-      <div class="contact_email_container list_items">
-        <p>harini0397@gmail.com</p>
-      </div>
-      <div class="contact_number_container list_items">
-        <p>+918110081710</p>
+        <p>{{contact.number}}</p>
       </div>
       <div class="action_contact_container list_items">
         <i class="far fa-trash-alt delete_icon"></i>

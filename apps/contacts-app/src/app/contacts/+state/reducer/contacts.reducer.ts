@@ -5,12 +5,12 @@ import { IContact } from '@contacts-app/api-interfaces';
 export const contactsFeatureKey = 'contacts';
 
 export interface ContactsState {
-contatcs:Array<IContact>
+contacts:Array<IContact>
 
 }
 
 export const initialState: ContactsState = {
-  contatcs:[]
+  contacts:[]
 };
 
 

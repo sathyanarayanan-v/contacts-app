@@ -4,11 +4,11 @@ import { ContactsState, contactReducer } from '../contacts/+state/reducer/contac
 
 
 export interface AppState {
-    ContactsState:ContactsState
+    contactState:ContactsState
 }
 
 export const Reducers = combineReducers({
-  contatState:contactReducer
+  contactState:contactReducer
 });
 
 export const ReducerToken = new InjectionToken<ActionReducerMap<AppState>>(

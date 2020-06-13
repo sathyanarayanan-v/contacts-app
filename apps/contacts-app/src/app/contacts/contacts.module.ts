@@ -15,7 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     EffectsModule.forFeature([ContactsEffects]),
-    StoreModule.forFeature('contatState', contactReducer),
+    StoreModule.forFeature('contactState', contactReducer),
     ContactsAppCommonModule,
     MatSnackBarModule
   ]
