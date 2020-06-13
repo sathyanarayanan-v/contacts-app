@@ -14,7 +14,7 @@ export class ContactService {
   loadContacts = () => this.httpService.get('contacts');
 
   deleteContacts = (ids: Array<string>) =>
-    this.httpService.post('contacts/delete', ids);
+    this.httpService.post('contacts/delete', {ids});
   
     emitSearchContactValue = (name: string) => this.searchTerm.next(name);
 }

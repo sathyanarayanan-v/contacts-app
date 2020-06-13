@@ -34,7 +34,7 @@ export class ListContactsComponent implements OnInit, OnDestroy {
           return;
         } else {
           this.contacts = data;
-          console.log(this.contacts);
+          this.selected_contacts =[]
         }
       });
     const sub2 = this.contactService.searchTextObserver.subscribe((data) => {

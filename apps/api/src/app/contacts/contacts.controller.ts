@@ -11,7 +11,15 @@ export class ContactsController {
     return await this.contactService.getContacts();
   }
   @Post()
-  async createContact(@Body() contact:IContact): Promise<IContactSchema | IErrorMessage> {
-    return await this.contactService.addContact(contact)
+  async createContact(
+    @Body() contact: IContact
+  ): Promise<IContactSchema | IErrorMessage> {
+    return await this.contactService.addContact(contact);
+  }
+  @Post('delete')
+  async deleteContact(
+    @Body('ids') ids: Array<string>
+  ): Promise<IContactSchema | IErrorMessage> {
+    return await this.contactService.deleteContacts(ids);
   }
 }
