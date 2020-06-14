@@ -48,21 +48,28 @@
         (click)="viewContact(contact)"
         class="contact_name_container list_items"
       >
-        <p class="contact_name">{{ contact.name| titlecase }}</p>
+        <p class="contact_name">{{ contact.name | titlecase }}</p>
       </div>
       <div class="contact_email_container list_items">
-        <p>{{ contact.email === ''?"Not Provided":contact.email  }}</p>
+        <p>{{ contact.email === '' ? 'Not Provided' : contact.email }}</p>
       </div>
       <div class="contact_number_container list_items">
         <p>{{ contact.number }}</p>
       </div>
       <div class="action_contact_container list_items">
         <i
+          [matTooltip]="'Delete Contact'"
           class="far fa-trash-alt delete_icon"
           (click)="onDeleteContactClicked(contact._id)"
         ></i>
-        <i class="fa fa-qrcode update_icon" aria-hidden="true"></i>
         <i
+          [matTooltip]="'View QR Code'"
+          class="fa fa-qrcode update_icon"
+          (click)="shareContactClicked(contact)"
+          aria-hidden="true"
+        ></i>
+        <i
+          [matTooltip]="'Update Contact'"
           class="fas fa-user-edit update_icon"
           (click)="updateContactClicked(contact)"
         ></i>

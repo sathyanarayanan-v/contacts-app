@@ -29,6 +29,9 @@ input {
 .title {
   width: 300px;
 }
+.email>input{
+  text-transform: none !important;
+}
 textarea {
   resize: none;
   padding-left: 24px;

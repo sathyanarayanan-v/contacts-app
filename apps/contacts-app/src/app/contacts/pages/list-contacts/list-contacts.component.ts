@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteContactComponent } from '../../components/delete-contact/delete-contact.component';
 import { ContactService } from '../../contacts.service';
 import { ViewContactComponent } from '../view-contact/view-contact.component';
+import { ShareContactComponent } from '../share-contact/share-contact.component';
 @Component({
   selector: 'contacts-app-list-contacts',
   templateUrl: './list-contacts.component.html',
@@ -34,7 +35,7 @@ export class ListContactsComponent implements OnInit, OnDestroy {
           return;
         } else {
           this.contacts = data;
-          this.selected_contacts =[]
+          this.selected_contacts = [];
         }
       });
     const sub2 = this.contactService.searchTextObserver.subscribe((data) => {
@@ -45,9 +46,12 @@ export class ListContactsComponent implements OnInit, OnDestroy {
     this.subscription.add(sub2);
   }
   viewContact(contact: IContact) {
-    this.store.dispatch(ContactActions.selectContacts({ids:contact}))
-    this.dialog.open(ViewContactComponent, { width: '700px', height: '600px' ,data:{"action":"view"}});
-    
+    this.store.dispatch(ContactActions.selectContacts({ ids: contact }));
+    this.dialog.open(ViewContactComponent, {
+      width: '700px',
+      height: '600px',
+      data: { action: 'view' },
+    });
   }
   onListChecked(_id: string) {
     if (this.selected_contacts.includes(_id)) {
@@ -60,9 +64,20 @@ export class ListContactsComponent implements OnInit, OnDestroy {
     this.default_checked_value_header =
       this.selected_contacts.length === this.contacts.length;
   }
-  updateContactClicked(contact:any) {
-    this.store.dispatch(ContactActions.selectContacts({ids:contact}))
-    this.dialog.open(ViewContactComponent, { width: '700px', height: '600px' ,data:{"action":"edit"}});
+  shareContactClicked(contact) {
+    this.dialog.open(ShareContactComponent, {
+      width: '500px',
+      height: '500px',
+      data:{contact}
+    });
+  }
+  updateContactClicked(contact: any) {
+    this.store.dispatch(ContactActions.selectContacts({ ids: contact }));
+    this.dialog.open(ViewContactComponent, {
+      width: '700px',
+      height: '600px',
+      data: { action: 'edit' },
+    });
   }
   deleteContacts() {
     this.store.dispatch(

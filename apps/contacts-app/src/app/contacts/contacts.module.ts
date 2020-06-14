@@ -11,11 +11,14 @@ import { DeleteContactComponent } from './components/delete-contact/delete-conta
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewContactComponent } from './pages/view-contact/view-contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShareContactComponent } from './pages/share-contact/share-contact.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
 @NgModule({
-  declarations: [ListContactsComponent, DeleteContactComponent, ViewContactComponent],
+  declarations: [ListContactsComponent, DeleteContactComponent, ViewContactComponent, ShareContactComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,7 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StoreModule.forFeature('contactState', contactReducer),
     ContactsAppCommonModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    QRCodeModule,
+    MatTooltipModule
   ]
 })
 export class ContactsModule { }

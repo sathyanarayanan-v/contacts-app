@@ -1,0 +1,16 @@
+<div class="header">{{ data.contact.name | uppercase }}</div>
+<div class="qr_code_container">
+  <qrcode
+    [qrdata]="contactInfo"
+    [width]="256"
+    [errorCorrectionLevel]="'M'"
+  ></qrcode>
+</div>
+<div class="button_container">
+  <button [mat-dialog-close]="onDialogYes" class="btn_delete pointer">
+    <span> OK </span>
+  </button>
+  <button [mat-dialog-close]="onDialogYes" class="button_cancel pointer">
+    <span> Cancel </span>
+  </button>
+</div>
