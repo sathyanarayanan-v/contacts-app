@@ -23,7 +23,7 @@ services:
     container_name: contacts_app_frontend_container
     working_dir: /app/contacts-app/dist/apps/contacts-app
     ports:
-      - '8050:8050'
+      - '4200:4200'
     command: ['http-server', '-p', '4200', '-o', '/app/contacts-app/dist/apps/contacts-app']
     restart: always
   mongodb:
