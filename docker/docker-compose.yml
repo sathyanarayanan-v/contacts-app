@@ -28,7 +28,7 @@ services:
     restart: always
   mongodb:
     image: 'mongo:latest'
-    container_name: contacts_app_mongo_container
+    container_name: mongodb
     environment:
       - 'MONGODB_DATABASE="contacts_app"'
     ports:
