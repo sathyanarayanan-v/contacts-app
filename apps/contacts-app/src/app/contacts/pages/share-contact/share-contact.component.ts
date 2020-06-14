@@ -18,6 +18,8 @@ VERSION:3.0
 N:${this.data.contact.name}
 ORG:${this.data.contact.company}
 EMAIL:${this.data.contact.email}
+TITLE:${this.data.contact.title}
+ADR;TYPE=HOME,PREF:;;${this.data.contact.address}
 TEL;TYPE=voice,work,pref:${this.data.contact.number}
 END:VCARD
 `

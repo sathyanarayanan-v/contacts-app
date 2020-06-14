@@ -16,8 +16,7 @@ const isValidContactName = async name => {
 export const ContactSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    validate:isValidContactName
+    required: true
   },
   number: {
     type: String,

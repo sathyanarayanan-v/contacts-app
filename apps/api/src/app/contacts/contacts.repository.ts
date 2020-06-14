@@ -26,7 +26,7 @@ export class ContactRepository {
       .catch((err) => {
         console.log(err);
         return this.commonService.sendErrorMessage(
-          `Unable to insert contact. Error :: Contact name already exist`
+          `Unable to insert contact. Error :: Contact name already exist`,true
         );
       });
 
@@ -37,7 +37,7 @@ export class ContactRepository {
       .then((contact) => contact)
       .catch((error) =>
         this.commonService.sendErrorMessage(
-          `Unable to delete contact.Error :: ${error}`
+          `Unable to delete contact.Error :: ${error}`,true
         )
       );
   updateContact = async (
@@ -51,7 +51,7 @@ export class ContactRepository {
       .catch((err) => {
         console.log(err);
         return this.commonService.sendErrorMessage(
-          `Unable to update contact. Error :: ${err}`
+          `Unable to update contact. Error :: ${err}`,true
         );
       });
 }
