@@ -73,7 +73,7 @@ export class ContactsEffects {
           map((res: IContact) => {
             if (res.hasOwnProperty('error')) {
               this.snackbar.showSnackbar(
-                'Unable to create contact, please try again',
+                'Unable to update contact, please try again',
                 'OK',
                 5000,
                 'red_snackbar'
@@ -84,7 +84,7 @@ export class ContactsEffects {
           }),
           catchError((error) => {
             this.snackbar.showSnackbar(
-              'Unable to create contact, please try again',
+              'Unable to update contact, please try again',
               'OK',
               5000,
               'red_snackbar'
@@ -100,9 +100,18 @@ export class ContactsEffects {
       ofType(ContactsActions.deleteContacts),
       switchMap(({ ids }) => {
         return this.contactService.deleteContacts(ids).pipe(
-          map((res: any) =>
-            ContactsActions.deleteContactsSuccess({ contacts: res })
-          ),
+          map((res: any) => {
+            if (res.hasOwnProperty('error')) {
+              this.snackbar.showSnackbar(
+                'Unable to delete contact, please try again',
+                'OK',
+                5000,
+                'red_snackbar'
+              );
+              return ContactsActions.deleteContactFailure({ error: res });
+            }
+            return ContactsActions.deleteContactsSuccess({ contacts: res });
+          }),
           catchError((error) => {
             this.snackbar.showSnackbar(
               'Unable to delete contacts, please try again',

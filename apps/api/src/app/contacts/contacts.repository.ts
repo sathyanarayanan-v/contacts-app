@@ -1,6 +1,7 @@
 import { CommonService } from '../common/common.service';
 import { IContactSchema, Contact } from './contacts.schema';
 import { IErrorMessage, IContact } from '@contacts-app/api-interfaces';
+import { async } from 'rxjs/internal/scheduler/async';
 
 export class ContactRepository {
   commonService: CommonService;
@@ -23,7 +24,7 @@ export class ContactRepository {
       .save()
       .then((newContact) => newContact)
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         return this.commonService.sendErrorMessage(
           `Unable to insert contact. Error :: Contact name already exist`
         );
@@ -39,4 +40,18 @@ export class ContactRepository {
           `Unable to delete contact.Error :: ${error}`
         )
       );
+  updateContact = async (
+    contact: IContact
+  ): Promise<IContactSchema | IErrorMessage> =>
+    await Contact.findOneAndUpdate({ _id: contact._id }, contact, {
+      new: true,
+      runValidators: false,
+    })
+      .then((updatedContact) => updatedContact)
+      .catch((err) => {
+        console.log(err);
+        return this.commonService.sendErrorMessage(
+          `Unable to update contact. Error :: ${err}`
+        );
+      });
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { IContactSchema } from './contacts.schema';
 import { IErrorMessage, IContact } from '@contacts-app/api-interfaces';
@@ -21,5 +21,9 @@ export class ContactsController {
     @Body('ids') ids: Array<string>
   ): Promise<IContactSchema | IErrorMessage> {
     return await this.contactService.deleteContacts(ids);
+  }
+  @Put()
+  async updateContact(@Body() contact:IContact){
+    return await this.contactService.updateContact(contact)
   }
 }

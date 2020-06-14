@@ -73,7 +73,6 @@ export class ViewContactComponent implements OnInit, OnDestroy {
             });
           }
           if (action === 'create') {
-            console.log('here');
             this.create_contact = true;
           }
         }
@@ -112,10 +111,20 @@ export class ViewContactComponent implements OnInit, OnDestroy {
       this.dialogRef.close();
     }
     if (action === 'create') {
-      this.store.dispatch(ContactActions.createContact({contact:this.create_contact_form.value}))
-      this.dialogRef.close()
+      this.store.dispatch(
+        ContactActions.createContact({
+          contact: this.create_contact_form.value,
+        })
+      );
+      this.dialogRef.close();
     }
     if (action === 'edit') {
+      this.store.dispatch(
+        ContactActions.updateContact({
+          contact: { ...this.create_contact_form.value, _id: this.contact._id },
+        })
+      );
+      this.dialogRef.close();
     }
   }
   ngOnDestroy() {

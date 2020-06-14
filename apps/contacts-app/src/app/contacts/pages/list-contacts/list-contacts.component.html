@@ -48,10 +48,10 @@
         (click)="viewContact(contact)"
         class="contact_name_container list_items"
       >
-        <p class="contact_name">{{ contact.name | titlecase }}</p>
+        <p class="contact_name">{{ contact.name| titlecase }}</p>
       </div>
       <div class="contact_email_container list_items">
-        <p>{{ contact.email }}</p>
+        <p>{{ contact.email === ''?"Not Provided":contact.email  }}</p>
       </div>
       <div class="contact_number_container list_items">
         <p>{{ contact.number }}</p>

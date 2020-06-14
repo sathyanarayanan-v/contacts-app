@@ -22,4 +22,5 @@ export class ContactsService {
     }
     return responseArray;
   };
+  updateContact = async(contact:IContact):Promise<IContactSchema | IErrorMessage> => await this.contactRepository.updateContact(contact)
 }
