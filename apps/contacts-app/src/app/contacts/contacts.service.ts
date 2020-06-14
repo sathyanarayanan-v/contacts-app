@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from '@contacts-app/shared';
+import { HttpService, IContact } from '@contacts-app/shared';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,13 @@ export class ContactService {
   loadContacts = () => this.httpService.get('contacts');
 
   deleteContacts = (ids: Array<string>) =>
-    this.httpService.post('contacts/delete', {ids});
-  
-    emitSearchContactValue = (name: string) => this.searchTerm.next(name);
+    this.httpService.post('contacts/delete', { ids });
+
+  updateContacts = (contact: IContact) =>
+    this.httpService.put('contacts', contact);
+
+  createContact = (contact: IContact) =>
+    this.httpService.post('contacts', contact);
+
+  emitSearchContactValue = (name: string) => this.searchTerm.next(name);
 }

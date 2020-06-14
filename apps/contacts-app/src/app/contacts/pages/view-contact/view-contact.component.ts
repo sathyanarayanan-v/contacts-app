@@ -19,16 +19,22 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./view-contact.component.css'],
 })
 export class ViewContactComponent implements OnInit, OnDestroy {
-  contact: IContact = null;
-  disabled_status = false;
   constructor(
     private store: Store<AppState>,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<ViewContactComponent>
   ) {}
+
+  create_contact = false;
+  contact: IContact = null;
+  disabled_status = false;
   subscription = new Subscription();
   create_contact_form: FormGroup;
+  same_contact_name = false;
+  same_contact_number = false;
+  same_contact = false;
+  contacts: Array<IContact> = null;
 
   ngOnInit(): void {
     this.create_contact_form = this.fb.group({
@@ -61,15 +67,43 @@ export class ViewContactComponent implements OnInit, OnDestroy {
             this.create_contact_form.patchValue(this.contact);
           }
           if (action === 'view') {
-            console.log(this.create_contact_form.controls);
             Object.keys(this.contact).forEach((key) => {
               if (Object.keys(this.create_contact_form.controls).includes(key))
                 this.create_contact_form.get(key).disable();
             });
           }
+          if (action === 'create') {
+            console.log('here');
+            this.create_contact = true;
+          }
+        }
+      });
+    const sub2 = this.store
+      .select(contactsQuery.getContacts)
+      .subscribe((data) => {
+        if (!data) {
+          return;
+        } else {
+          this.contacts = data;
         }
       });
     this.subscription.add(sub1);
+    this.subscription.add(sub2);
+  }
+  checkForExistenceInName($event) {
+    const value = $event.target.value.toLowerCase();
+    this.same_contact_name = this.contacts
+      .map((contact) => contact.name.toLowerCase())
+      .includes(value);
+    this.same_contact = this.same_contact_name && this.same_contact_number;
+  }
+  checkForExistenceInNumber($event) {
+    const value = $event.target.value.toLowerCase();
+    this.same_contact_number = this.contacts
+      .map((contact) => contact.number.toLowerCase())
+      .includes(value);
+
+    this.same_contact = this.same_contact_name && this.same_contact_number;
   }
   onButtonClicked() {
     const action = this.data.action;
@@ -78,7 +112,8 @@ export class ViewContactComponent implements OnInit, OnDestroy {
       this.dialogRef.close();
     }
     if (action === 'create') {
-      console.log(this.create_contact_form.value);
+      this.store.dispatch(ContactActions.createContact({contact:this.create_contact_form.value}))
+      this.dialogRef.close()
     }
     if (action === 'edit') {
     }

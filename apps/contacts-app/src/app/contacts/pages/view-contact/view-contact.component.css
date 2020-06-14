@@ -53,3 +53,6 @@ textarea {
   margin-bottom: 8px !important;
   margin-left: 39%;
 }
+.required{
+  color:red
+}

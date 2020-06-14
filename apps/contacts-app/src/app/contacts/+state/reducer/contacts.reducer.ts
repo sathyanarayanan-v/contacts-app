@@ -38,5 +38,18 @@ export const contactReducer = createReducer(
       ...state,
       contacts:updatedArray
     };
+  }),
+  on(ContactsActions.createContactSuccess,(state,{contact})=>{
+    return {
+      ...state,
+      contacts:[...state.contacts,contact]
+    }
+  }),
+  on(ContactsActions.updateContactSuccess,(state,{contact})=>{
+    const updatedArray = state.contacts.filter(contact_ => contact_._id !== contact._id)
+    return {
+      ...state,
+      contacts:[...updatedArray,contact]
+    }
   })
 );

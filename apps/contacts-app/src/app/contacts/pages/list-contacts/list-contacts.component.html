@@ -44,8 +44,11 @@
           [checked]="selected_contacts.includes(contact._id)"
         />
       </div>
-      <div class="contact_name_container list_items">
-        <p>{{ contact.name | titlecase }}</p>
+      <div
+        (click)="viewContact(contact)"
+        class="contact_name_container list_items"
+      >
+        <p class="contact_name">{{ contact.name | titlecase }}</p>
       </div>
       <div class="contact_email_container list_items">
         <p>{{ contact.email }}</p>
@@ -58,7 +61,7 @@
           class="far fa-trash-alt delete_icon"
           (click)="onDeleteContactClicked(contact._id)"
         ></i>
-        <i class="far fa-eye eye_icon" (click)="viewContact(contact)"></i>
+        <i class="fa fa-qrcode update_icon" aria-hidden="true"></i>
         <i
           class="fas fa-user-edit update_icon"
           (click)="updateContactClicked(contact)"

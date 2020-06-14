@@ -31,6 +31,11 @@
   margin-right: 25px;
   margin-bottom: 10px;
 }
+.contact_name{
+color:#1a73e8;
+cursor: pointer;
+text-decoration: underline;
+}
 .contacts:hover {
   border: 1px solid #1a73e8;
   background-color: #f4f7fb;

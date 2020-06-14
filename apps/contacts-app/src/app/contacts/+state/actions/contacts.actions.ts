@@ -26,3 +26,27 @@ export const deleteContactFailure = createAction(
   '[CONTACT] DELETE CONTACT FAILURE',
   props<{ error: any }>()
 );
+export const createContact = createAction(
+  '[CONTACT] CREATE CONTACT',
+  props<{ contact: IContact }>()
+);
+export const createContactSuccess = createAction(
+  '[CONTACT] CREATE CONTACT SUCCESS',
+  props<{ contact: IContact }>()
+);
+export const createContactFailure = createAction(
+  '[CONTACT] CREATE CONTACT FAILURE',
+  props<{ error: any }>()
+);
+export const updateContact = createAction(
+  '[CONTACT] UPDATE CONTACT',
+  props<{ contact: IContact }>()
+);
+export const updateContactSuccess = createAction(
+  '[CONTACT] UPDATE CONTACT SUCCESS',
+  props<{ contact: IContact }>()
+);
+export const updateContactFailure = createAction(
+  '[CONTACT] UPDATE CONTACT FAILURE',
+  props<{ error: any }>()
+);

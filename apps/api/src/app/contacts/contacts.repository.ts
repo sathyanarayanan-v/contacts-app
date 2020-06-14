@@ -23,6 +23,7 @@ export class ContactRepository {
       .save()
       .then((newContact) => newContact)
       .catch((err) => {
+        console.log(err)
         return this.commonService.sendErrorMessage(
           `Unable to insert contact. Error :: Contact name already exist`
         );

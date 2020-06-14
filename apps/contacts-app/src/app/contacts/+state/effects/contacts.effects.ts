@@ -5,11 +5,15 @@ import { of } from 'rxjs';
 
 import * as ContactsActions from '../actions/contacts.actions';
 import { ContactService } from '../../contacts.service';
-import {SnackbarService} from '@contacts-app/shared'
+import { SnackbarService, IContact } from '@contacts-app/shared';
 
 @Injectable()
 export class ContactsEffects {
-  constructor(private actions$: Actions, private snackbar: SnackbarService,private contactService:ContactService) {}
+  constructor(
+    private actions$: Actions,
+    private snackbar: SnackbarService,
+    private contactService: ContactService
+  ) {}
   fetchContacts = createEffect(() => {
     return this.actions$.pipe(
       ofType(ContactsActions.loadContacts),
@@ -31,10 +35,70 @@ export class ContactsEffects {
       })
     );
   });
+  addContact = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ContactsActions.createContact),
+      switchMap(({ contact }) => {
+        return this.contactService.createContact(contact).pipe(
+          map((res: IContact) => {
+            if (res.hasOwnProperty('error')) {
+              this.snackbar.showSnackbar(
+                'Unable to create contact, please try again',
+                'OK',
+                5000,
+                'red_snackbar'
+              );
+              return ContactsActions.createContactFailure({ error: res });
+            }
+            return ContactsActions.createContactSuccess({ contact: res });
+          }),
+          catchError((error) => {
+            this.snackbar.showSnackbar(
+              'Unable to create contact, please try again',
+              'OK',
+              5000,
+              'red_snackbar'
+            );
+            return of(ContactsActions.createContactFailure({ error }));
+          })
+        );
+      })
+    );
+  });
+  updateContact = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ContactsActions.updateContact),
+      switchMap(({ contact }) => {
+        return this.contactService.updateContacts(contact).pipe(
+          map((res: IContact) => {
+            if (res.hasOwnProperty('error')) {
+              this.snackbar.showSnackbar(
+                'Unable to create contact, please try again',
+                'OK',
+                5000,
+                'red_snackbar'
+              );
+              return ContactsActions.updateContactFailure({ error: res });
+            }
+            return ContactsActions.updateContactSuccess({ contact: res });
+          }),
+          catchError((error) => {
+            this.snackbar.showSnackbar(
+              'Unable to create contact, please try again',
+              'OK',
+              5000,
+              'red_snackbar'
+            );
+            return of(ContactsActions.updateContactFailure({ error }));
+          })
+        );
+      })
+    );
+  });
   deleteContacts = createEffect(() => {
     return this.actions$.pipe(
       ofType(ContactsActions.deleteContacts),
-      switchMap(({ids}) => {
+      switchMap(({ ids }) => {
         return this.contactService.deleteContacts(ids).pipe(
           map((res: any) =>
             ContactsActions.deleteContactsSuccess({ contacts: res })
