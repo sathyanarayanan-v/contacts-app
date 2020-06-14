@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+$color_primary: #0486fa;
+$font_primary: 'Montserrat', sans-serif;
+$color_success: #50a948;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $font_primary;
+  }
+  body{
+    background-color: #eff0f2;
+  }
+  .red_snackbar {
+    background: #e2543a;
+    color: #fafafa;
+  }
+  .red_snackbar button {
+    color: white;
+    font-weight: bold;
+  }

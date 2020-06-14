@@ -1,0 +1,37 @@
+version: '3'
+services:
+  contacts-app:
+    build:
+      dockerfile: Dockerfile
+      context: ../
+    image: 'contacts-app:1.0.0'
+  contactsbackend:
+    image: 'contacts-app:1.0.0'
+    container_name: contacts_app_backend_container
+    working_dir: /app/contacts-app/dist/apps/api
+    environment:
+      - DB_URL=mongodb://mongodb:27017/contact_app
+      - PORT=5000
+    restart: always
+    ports:
+      - '5000:5000'
+    command: ['node', 'main.js']
+    expose:
+      - 5000
+  contactsfrontend:
+    image: 'contacts-app:1.0.0'
+    container_name: contacts_app_frontend_container
+    working_dir: /app/contacts-app/dist/apps/contacts-app
+    ports:
+      - '4200:4200'
+    command: ['http-server', '-p', '4200', '-o', '/app/contacts-app/dist/apps/contacts-app']
+    restart: always
+  mongodb:
+    image: 'mongo:latest'
+    container_name: contacts_app_mongo_container
+    environment:
+      - 'MONGODB_DATABASE="contacts_app"'
+    ports:
+      - '27017:27017'
+    expose:
+      - 27017

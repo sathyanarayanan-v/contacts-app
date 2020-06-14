@@ -1,0 +1,27 @@
+<div class="header_container">
+  <div class="logo_container">
+    <img src="assets/png/logo.png" class="logo" alt="" />
+  </div>
+  <div class="header_text">
+    <span>Contacts App</span>
+  </div>
+  <div class="utilities_container">
+    <div class="contacts_search_container utility_items">
+      <input
+        (keyup)="searchContacts($event)"
+        (paste)="searchContacts($event)"
+        type="text"
+        name=""
+        id=""
+        placeholder="Enter contacts name..."
+      />
+    </div>
+    <div
+      class="add_contacts_button_container utility_items"
+      (click)="onNewContactButtonClicked()"
+    >
+      <img src="assets/svg/plus_button.svg" class="plus_button" alt="" />
+      <p>New Contact</p>
+    </div>
+  </div>
+</div>

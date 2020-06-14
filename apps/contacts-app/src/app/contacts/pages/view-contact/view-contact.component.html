@@ -1,0 +1,100 @@
+<contacts-app-common-dialog
+  title="View Contact"
+  confirm="OK"
+  cancel="Cancel"
+  (buttonClicked)="onButtonClicked()"
+>
+  <div class="contact_details">
+    <form [formGroup]="create_contact_form">
+      <div class="first_container container">
+        <div class="name items">
+          <label for=""> Name <span class="required">*</span> </label>
+          <input
+            formControlName="name"
+            type="text"
+            class="input_item"
+            (keyup)="checkForExistenceInName($event)"
+            (paste)="checkForExistenceInName($event)"
+            [disabled]="disabled_status"
+            [value]="contact.name"
+          />
+          <span *ngIf="same_contact && create_contact" class="required">
+            Contact name already exists *
+          </span>
+        </div>
+        <div class="number items">
+          <label for="">Number <span class="required">*</span></label>
+          <input
+            formControlName="number"
+            type="text"
+            class="input_item"
+            (keyup)="checkForExistenceInNumber($event)"
+            (paste)="checkForExistenceInNumber($event)"
+            [disabled]="disabled_status"
+            [value]="contact.number"
+          />
+          <span *ngIf="same_contact && create_contact" class="required">
+            Contact number already exists *
+          </span>
+
+        </div>
+      </div>
+      <div class="second_container container">
+        <div class="group items">
+          <label for="">Group</label>
+          <input
+            formControlName="group"
+            type="text"
+            class="input_item"
+            [disabled]="disabled_status"
+            [value]="contact.group"
+          />
+        </div>
+        <div class="email items">
+          <label for="">
+            E-mail
+          </label>
+          <input
+            formControlName="email"
+            type="text"
+            class="input_item"
+            [disabled]="disabled_status"
+            [value]="contact.email"
+          />
+        </div>
+      </div>
+      <div class="third_container container">
+        <div class="company items">
+          <label for="">Company</label>
+          <input
+            formControlName="company"
+            type="text"
+            class="input_item"
+            [disabled]="disabled_status"
+            [value]="contact.company"
+          />
+        </div>
+        <div class="title items">
+          <label for="">Title</label>
+          <input
+            formControlName="title"
+            type="text"
+            class="input_item"
+            [disabled]="disabled_status"
+            [value]="contact.title"
+          />
+        </div>
+      </div>
+      <div class="fourth_container container">
+        <div class="address items">
+          <label for="">Address</label>
+          <textarea
+            formControlName="address"
+            [disabled]="disabled_status"
+            [value]="contact.address"
+          ></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</contacts-app-common-dialog>
