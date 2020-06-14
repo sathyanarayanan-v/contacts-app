@@ -1,0 +1,1937 @@
+{
+  "projectGraph": {
+    "nodes": {
+      "contacts-app-e2e": {
+        "name": "contacts-app-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/contacts-app-e2e",
+          "sourceRoot": "apps/contacts-app-e2e/src",
+          "projectType": "application",
+          "architect": {
+            "e2e": {
+              "builder": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/contacts-app-e2e/cypress.json",
+                "tsConfig": "apps/contacts-app-e2e/tsconfig.e2e.json",
+                "devServerTarget": "contacts-app:serve"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "contacts-app:serve:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/contacts-app-e2e/tsconfig.e2e.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/contacts-app-e2e/**"
+                ]
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/contacts-app-e2e/cypress.json",
+              "ext": ".json",
+              "mtime": 1591939366276.9062
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/fixtures/example.json",
+              "ext": ".json",
+              "mtime": 1591939366277.92
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/integration/app.spec.ts",
+              "ext": ".ts",
+              "mtime": 1591939366278.3252
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/plugins/index.js",
+              "ext": ".js",
+              "mtime": 1591939366278.8052
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/support/app.po.ts",
+              "ext": ".ts",
+              "mtime": 1591939366279.3247
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/support/commands.ts",
+              "ext": ".ts",
+              "mtime": 1591939366279.6711
+            },
+            {
+              "file": "apps/contacts-app-e2e/src/support/index.ts",
+              "ext": ".ts",
+              "mtime": 1591939366279.9412
+            },
+            {
+              "file": "apps/contacts-app-e2e/tsconfig.e2e.json",
+              "ext": ".json",
+              "mtime": 1591939366277.1687
+            },
+            {
+              "file": "apps/contacts-app-e2e/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1591939366277.452
+            },
+            {
+              "file": "apps/contacts-app-e2e/tslint.json",
+              "ext": ".json",
+              "mtime": 1591939366276.542
+            }
+          ]
+        }
+      },
+      "api-interfaces": {
+        "name": "api-interfaces",
+        "type": "lib",
+        "data": {
+          "root": "libs/api-interfaces",
+          "sourceRoot": "libs/api-interfaces/src",
+          "projectType": "library",
+          "schematics": {},
+          "architect": {
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "libs/api-interfaces/tsconfig.lib.json",
+                  "libs/api-interfaces/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!libs/api-interfaces/**"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "libs/api-interfaces/jest.config.js",
+                "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
+                "passWithNoTests": true
+              }
+            }
+          },
+          "tags": [],
+          "files": []
+        }
+      },
+      "contacts-app": {
+        "name": "contacts-app",
+        "type": "app",
+        "data": {
+          "projectType": "application",
+          "schematics": {
+            "@nrwl/angular:component": {
+              "style": "scss"
+            }
+          },
+          "root": "apps/contacts-app",
+          "sourceRoot": "apps/contacts-app/src",
+          "prefix": "contacts-app",
+          "architect": {
+            "build": {
+              "builder": "@angular-devkit/build-angular:browser",
+              "options": {
+                "outputPath": "dist/apps/contacts-app",
+                "index": "apps/contacts-app/src/index.html",
+                "main": "apps/contacts-app/src/main.ts",
+                "polyfills": "apps/contacts-app/src/polyfills.ts",
+                "tsConfig": "apps/contacts-app/tsconfig.app.json",
+                "aot": true,
+                "assets": [
+                  "apps/contacts-app/src/favicon.ico",
+                  "apps/contacts-app/src/assets"
+                ],
+                "styles": [
+                  "apps/contacts-app/src/styles.scss"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/contacts-app/src/environments/environment.ts",
+                      "with": "apps/contacts-app/src/environments/environment.prod.ts"
+                    }
+                  ],
+                  "optimization": true,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "buildOptimizer": true,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "6kb",
+                      "maximumError": "10kb"
+                    }
+                  ]
+                }
+              }
+            },
+            "serve": {
+              "builder": "@angular-devkit/build-angular:dev-server",
+              "options": {
+                "browserTarget": "contacts-app:build",
+                "proxyConfig": "apps/contacts-app/proxy.conf.json"
+              },
+              "configurations": {
+                "production": {
+                  "browserTarget": "contacts-app:build:production"
+                }
+              }
+            },
+            "extract-i18n": {
+              "builder": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "browserTarget": "contacts-app:build"
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/contacts-app/tsconfig.app.json",
+                  "apps/contacts-app/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/contacts-app/**"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "apps/contacts-app/jest.config.js",
+                "tsConfig": "apps/contacts-app/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "apps/contacts-app/src/test-setup.ts"
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/contacts-app/browserslist",
+              "ext": "",
+              "mtime": 1591939366270.6516
+            },
+            {
+              "file": "apps/contacts-app/jest.config.js",
+              "ext": ".js",
+              "mtime": 1591939366275.6418
+            },
+            {
+              "file": "apps/contacts-app/proxy.conf.json",
+              "ext": ".json",
+              "mtime": 1591939366283.3616
+            },
+            {
+              "file": "apps/contacts-app/src/app/app-routing.module.ts",
+              "ext": ".ts",
+              "mtime": 1592122732743.984
+            },
+            {
+              "file": "apps/contacts-app/src/app/app.component.html",
+              "ext": ".html",
+              "mtime": 1592024500091.7568
+            },
+            {
+              "file": "apps/contacts-app/src/app/app.component.scss",
+              "ext": ".scss",
+              "mtime": 1591941772527.4612
+            },
+            {
+              "file": "apps/contacts-app/src/app/app.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1591939366274.9941
+            },
+            {
+              "file": "apps/contacts-app/src/app/app.component.ts",
+              "ext": ".ts",
+              "mtime": 1591941767117.3435
+            },
+            {
+              "file": "apps/contacts-app/src/app/app.module.ts",
+              "ext": ".ts",
+              "mtime": 1592118277920.9507
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/common.module.ts",
+              "ext": ".ts",
+              "mtime": 1592053003502.919
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.html",
+              "ext": ".html",
+              "mtime": 1592111336268.368
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.scss",
+              "ext": ".scss",
+              "mtime": 1592068969843.4966
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592022676678.4702
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.ts",
+              "ext": ".ts",
+              "mtime": 1592111373731.259
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.css",
+              "ext": ".css",
+              "mtime": 1592049965015.0557
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.html",
+              "ext": ".html",
+              "mtime": 1592049063716.8914
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592049063718.2878
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.ts",
+              "ext": ".ts",
+              "mtime": 1592049407070.9177
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/header/header.component.css",
+              "ext": ".css",
+              "mtime": 1592027984389.4297
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/header/header.component.html",
+              "ext": ".html",
+              "mtime": 1592114115505.876
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/header/header.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592024430135.3928
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/components/header/header.component.ts",
+              "ext": ".ts",
+              "mtime": 1592111240464.7463
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/pipes/filter-contact.pipe.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592050318511.753
+            },
+            {
+              "file": "apps/contacts-app/src/app/common/pipes/filter-contact.pipe.ts",
+              "ext": ".ts",
+              "mtime": 1592052305788.0264
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/actions/contacts.actions.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592040571439.574
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/actions/contacts.actions.ts",
+              "ext": ".ts",
+              "mtime": 1592113413995.8657
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/actions/index.ts",
+              "ext": ".ts",
+              "mtime": 1592040386149.345
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/effects/contacts.effects.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592023128348
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/effects/contacts.effects.ts",
+              "ext": ".ts",
+              "mtime": 1592116922670.0916
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/effects/index.ts",
+              "ext": ".ts",
+              "mtime": 1592040396843.7966
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/reducer/contacts.reducer.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592023133549
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/reducer/contacts.reducer.ts",
+              "ext": ".ts",
+              "mtime": 1592113674702.0369
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/reducer/index.ts",
+              "ext": ".ts",
+              "mtime": 1592040427296.4932
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/selectors/contacts.selectors.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592023929423.3718
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/selectors/contacts.selectors.ts",
+              "ext": ".ts",
+              "mtime": 1592049681786.2793
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/+state/selectors/index.ts",
+              "ext": ".ts",
+              "mtime": 1592040427296.432
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.css",
+              "ext": ".css",
+              "mtime": 1592049233800.3154
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.html",
+              "ext": ".html",
+              "mtime": 1592049407068.1362
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592049233804.4397
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.ts",
+              "ext": ".ts",
+              "mtime": 1592107488978.004
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/contacts.module.ts",
+              "ext": ".ts",
+              "mtime": 1592120227823.9722
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/contacts.service.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592041377141.0479
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/contacts.service.ts",
+              "ext": ".ts",
+              "mtime": 1592113485400.6506
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.css",
+              "ext": ".css",
+              "mtime": 1592113015523.1667
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.html",
+              "ext": ".html",
+              "mtime": 1592120257063.8875
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592052905185.892
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.ts",
+              "ext": ".ts",
+              "mtime": 1592118402262.2805
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.css",
+              "ext": ".css",
+              "mtime": 1592122699272.7395
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.html",
+              "ext": ".html",
+              "mtime": 1592122638570.9077
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592118124896.708
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.ts",
+              "ext": ".ts",
+              "mtime": 1592121269652.3435
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.css",
+              "ext": ".css",
+              "mtime": 1592119906014.6133
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.html",
+              "ext": ".html",
+              "mtime": 1592114774892.5032
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592052934174.147
+            },
+            {
+              "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.ts",
+              "ext": ".ts",
+              "mtime": 1592116764935.3933
+            },
+            {
+              "file": "apps/contacts-app/src/app/store/app.reducer.ts",
+              "ext": ".ts",
+              "mtime": 1592045979981.1443
+            },
+            {
+              "file": "apps/contacts-app/src/app/store/store.module.ts",
+              "ext": ".ts",
+              "mtime": 1591941505688.4363
+            },
+            {
+              "file": "apps/contacts-app/src/assets/.gitkeep",
+              "ext": "",
+              "mtime": 1591939366272.8572
+            },
+            {
+              "file": "apps/contacts-app/src/assets/png/logo.png",
+              "ext": ".png",
+              "mtime": 1592024759674.8762
+            },
+            {
+              "file": "apps/contacts-app/src/assets/svg/plus_button.svg",
+              "ext": ".svg",
+              "mtime": 1592027193057.6143
+            },
+            {
+              "file": "apps/contacts-app/src/environments/environment.prod.ts",
+              "ext": ".ts",
+              "mtime": 1592125506544.1646
+            },
+            {
+              "file": "apps/contacts-app/src/environments/environment.ts",
+              "ext": ".ts",
+              "mtime": 1592125507569.9202
+            },
+            {
+              "file": "apps/contacts-app/src/favicon.ico",
+              "ext": ".ico",
+              "mtime": 1591943527977
+            },
+            {
+              "file": "apps/contacts-app/src/index.html",
+              "ext": ".html",
+              "mtime": 1592039702469.926
+            },
+            {
+              "file": "apps/contacts-app/src/main.ts",
+              "ext": ".ts",
+              "mtime": 1591939366271.8826
+            },
+            {
+              "file": "apps/contacts-app/src/polyfills.ts",
+              "ext": ".ts",
+              "mtime": 1591939366272.2505
+            },
+            {
+              "file": "apps/contacts-app/src/styles.scss",
+              "ext": ".scss",
+              "mtime": 1592052375714.079
+            },
+            {
+              "file": "apps/contacts-app/src/test-setup.ts",
+              "ext": ".ts",
+              "mtime": 1591939366276.1382
+            },
+            {
+              "file": "apps/contacts-app/tsconfig.app.json",
+              "ext": ".json",
+              "mtime": 1591939366270.8982
+            },
+            {
+              "file": "apps/contacts-app/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1591939366270.0332
+            },
+            {
+              "file": "apps/contacts-app/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1591939366275.8916
+            },
+            {
+              "file": "apps/contacts-app/tslint.json",
+              "ext": ".json",
+              "mtime": 1591939366271.1946
+            }
+          ]
+        }
+      },
+      "api": {
+        "name": "api",
+        "type": "app",
+        "data": {
+          "root": "apps/api",
+          "sourceRoot": "apps/api/src",
+          "projectType": "application",
+          "prefix": "api",
+          "schematics": {},
+          "architect": {
+            "build": {
+              "builder": "@nrwl/node:build",
+              "options": {
+                "outputPath": "dist/apps/api",
+                "main": "apps/api/src/main.ts",
+                "tsConfig": "apps/api/tsconfig.app.json",
+                "assets": [
+                  "apps/api/src/assets"
+                ]
+              },
+              "configurations": {
+                "production": {
+                  "optimization": true,
+                  "extractLicenses": true,
+                  "inspect": false,
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/api/src/environments/environment.ts",
+                      "with": "apps/api/src/environments/environment.prod.ts"
+                    }
+                  ]
+                }
+              }
+            },
+            "serve": {
+              "builder": "@nrwl/node:execute",
+              "options": {
+                "buildTarget": "api:build"
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/api/tsconfig.app.json",
+                  "apps/api/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/api/**"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "apps/api/jest.config.js",
+                "tsConfig": "apps/api/tsconfig.spec.json",
+                "passWithNoTests": true
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/api/jest.config.js",
+              "ext": ".js",
+              "mtime": 1591939366282.922
+            },
+            {
+              "file": "apps/api/src/app/.gitkeep",
+              "ext": "",
+              "mtime": 1591939366281.8474
+            },
+            {
+              "file": "apps/api/src/app/app.controller.spec.ts",
+              "ext": ".ts",
+              "mtime": 1591939366283.609
+            },
+            {
+              "file": "apps/api/src/app/app.controller.ts",
+              "ext": ".ts",
+              "mtime": 1592043345956.447
+            },
+            {
+              "file": "apps/api/src/app/app.module.ts",
+              "ext": ".ts",
+              "mtime": 1592043449401.3289
+            },
+            {
+              "file": "apps/api/src/app/app.service.spec.ts",
+              "ext": ".ts",
+              "mtime": 1591939366284.5398
+            },
+            {
+              "file": "apps/api/src/app/app.service.ts",
+              "ext": ".ts",
+              "mtime": 1592043089771.8948
+            },
+            {
+              "file": "apps/api/src/app/common/common.module.ts",
+              "ext": ".ts",
+              "mtime": 1592043578564.4114
+            },
+            {
+              "file": "apps/api/src/app/common/common.service.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592043454045.0698
+            },
+            {
+              "file": "apps/api/src/app/common/common.service.ts",
+              "ext": ".ts",
+              "mtime": 1592043578564.639
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.controller.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592043385440.142
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.controller.ts",
+              "ext": ".ts",
+              "mtime": 1592116238382.1106
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.module.ts",
+              "ext": ".ts",
+              "mtime": 1592044195906.3696
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.repository.ts",
+              "ext": ".ts",
+              "mtime": 1592120895083.5698
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.schema.ts",
+              "ext": ".ts",
+              "mtime": 1592121004568.2966
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.service.spec.ts",
+              "ext": ".ts",
+              "mtime": 1592043388358.2896
+            },
+            {
+              "file": "apps/api/src/app/contacts/contacts.service.ts",
+              "ext": ".ts",
+              "mtime": 1592116238382.1775
+            },
+            {
+              "file": "apps/api/src/assets/.gitkeep",
+              "ext": "",
+              "mtime": 1591939366282.088
+            },
+            {
+              "file": "apps/api/src/environments/environment.prod.ts",
+              "ext": ".ts",
+              "mtime": 1592041699927.394
+            },
+            {
+              "file": "apps/api/src/environments/environment.ts",
+              "ext": ".ts",
+              "mtime": 1592041699927.494
+            },
+            {
+              "file": "apps/api/src/main.ts",
+              "ext": ".ts",
+              "mtime": 1592124917680.779
+            },
+            {
+              "file": "apps/api/tsconfig.app.json",
+              "ext": ".json",
+              "mtime": 1591939366280.77
+            },
+            {
+              "file": "apps/api/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1591939366281.0684
+            },
+            {
+              "file": "apps/api/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1591939366283.1443
+            },
+            {
+              "file": "apps/api/tslint.json",
+              "ext": ".json",
+              "mtime": 1591939366280.4062
+            }
+          ]
+        }
+      },
+      "@angular/animations": {
+        "type": "npm",
+        "name": "@angular/animations",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/cdk": {
+        "type": "npm",
+        "name": "@angular/cdk",
+        "data": {
+          "version": "^9.2.4",
+          "files": []
+        }
+      },
+      "@angular/common": {
+        "type": "npm",
+        "name": "@angular/common",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/compiler": {
+        "type": "npm",
+        "name": "@angular/compiler",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/core": {
+        "type": "npm",
+        "name": "@angular/core",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/forms": {
+        "type": "npm",
+        "name": "@angular/forms",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/material": {
+        "type": "npm",
+        "name": "@angular/material",
+        "data": {
+          "version": "^8.2.3",
+          "files": []
+        }
+      },
+      "@angular/platform-browser": {
+        "type": "npm",
+        "name": "@angular/platform-browser",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/platform-browser-dynamic": {
+        "type": "npm",
+        "name": "@angular/platform-browser-dynamic",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/router": {
+        "type": "npm",
+        "name": "@angular/router",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@nestjs/common": {
+        "type": "npm",
+        "name": "@nestjs/common",
+        "data": {
+          "version": "^6.8.3",
+          "files": []
+        }
+      },
+      "@nestjs/core": {
+        "type": "npm",
+        "name": "@nestjs/core",
+        "data": {
+          "version": "^6.8.3",
+          "files": []
+        }
+      },
+      "@nestjs/platform-express": {
+        "type": "npm",
+        "name": "@nestjs/platform-express",
+        "data": {
+          "version": "^6.8.3",
+          "files": []
+        }
+      },
+      "@ngrx/effects": {
+        "type": "npm",
+        "name": "@ngrx/effects",
+        "data": {
+          "version": "^9.2.0",
+          "files": []
+        }
+      },
+      "@ngrx/entity": {
+        "type": "npm",
+        "name": "@ngrx/entity",
+        "data": {
+          "version": "^9.2.0",
+          "files": []
+        }
+      },
+      "@ngrx/schematics": {
+        "type": "npm",
+        "name": "@ngrx/schematics",
+        "data": {
+          "version": "^9.2.0",
+          "files": []
+        }
+      },
+      "@ngrx/store": {
+        "type": "npm",
+        "name": "@ngrx/store",
+        "data": {
+          "version": "^9.2.0",
+          "files": []
+        }
+      },
+      "@ngrx/store-devtools": {
+        "type": "npm",
+        "name": "@ngrx/store-devtools",
+        "data": {
+          "version": "^9.2.0",
+          "files": []
+        }
+      },
+      "@nrwl/angular": {
+        "type": "npm",
+        "name": "@nrwl/angular",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "@types/lodash": {
+        "type": "npm",
+        "name": "@types/lodash",
+        "data": {
+          "version": "^4.14.155",
+          "files": []
+        }
+      },
+      "@types/mongoose": {
+        "type": "npm",
+        "name": "@types/mongoose",
+        "data": {
+          "version": "^5.7.24",
+          "files": []
+        }
+      },
+      "angularx-qrcode": {
+        "type": "npm",
+        "name": "angularx-qrcode",
+        "data": {
+          "version": "^2.3.4",
+          "files": []
+        }
+      },
+      "core-js": {
+        "type": "npm",
+        "name": "core-js",
+        "data": {
+          "version": "^2.5.4",
+          "files": []
+        }
+      },
+      "lodash": {
+        "type": "npm",
+        "name": "lodash",
+        "data": {
+          "version": "^4.17.15",
+          "files": []
+        }
+      },
+      "mongoose": {
+        "type": "npm",
+        "name": "mongoose",
+        "data": {
+          "version": "^5.9.18",
+          "files": []
+        }
+      },
+      "reflect-metadata": {
+        "type": "npm",
+        "name": "reflect-metadata",
+        "data": {
+          "version": "^0.1.13",
+          "files": []
+        }
+      },
+      "rxjs": {
+        "type": "npm",
+        "name": "rxjs",
+        "data": {
+          "version": "~6.5.4",
+          "files": []
+        }
+      },
+      "zone.js": {
+        "type": "npm",
+        "name": "zone.js",
+        "data": {
+          "version": "^0.10.2",
+          "files": []
+        }
+      },
+      "@angular/cli": {
+        "type": "npm",
+        "name": "@angular/cli",
+        "data": {
+          "version": "9.1.0",
+          "files": []
+        }
+      },
+      "@nrwl/workspace": {
+        "type": "npm",
+        "name": "@nrwl/workspace",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "@types/node": {
+        "type": "npm",
+        "name": "@types/node",
+        "data": {
+          "version": "~8.9.4",
+          "files": []
+        }
+      },
+      "dotenv": {
+        "type": "npm",
+        "name": "dotenv",
+        "data": {
+          "version": "6.2.0",
+          "files": []
+        }
+      },
+      "ts-node": {
+        "type": "npm",
+        "name": "ts-node",
+        "data": {
+          "version": "~7.0.0",
+          "files": []
+        }
+      },
+      "tslint": {
+        "type": "npm",
+        "name": "tslint",
+        "data": {
+          "version": "~6.0.0",
+          "files": []
+        }
+      },
+      "eslint": {
+        "type": "npm",
+        "name": "eslint",
+        "data": {
+          "version": "6.8.0",
+          "files": []
+        }
+      },
+      "typescript": {
+        "type": "npm",
+        "name": "typescript",
+        "data": {
+          "version": "~3.8.3",
+          "files": []
+        }
+      },
+      "prettier": {
+        "type": "npm",
+        "name": "prettier",
+        "data": {
+          "version": "2.0.4",
+          "files": []
+        }
+      },
+      "@nrwl/nest": {
+        "type": "npm",
+        "name": "@nrwl/nest",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "@angular/compiler-cli": {
+        "type": "npm",
+        "name": "@angular/compiler-cli",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular/language-service": {
+        "type": "npm",
+        "name": "@angular/language-service",
+        "data": {
+          "version": "^9.1.0",
+          "files": []
+        }
+      },
+      "@angular-devkit/build-angular": {
+        "type": "npm",
+        "name": "@angular-devkit/build-angular",
+        "data": {
+          "version": "0.901.0",
+          "files": []
+        }
+      },
+      "codelyzer": {
+        "type": "npm",
+        "name": "codelyzer",
+        "data": {
+          "version": "~5.0.1",
+          "files": []
+        }
+      },
+      "jest-preset-angular": {
+        "type": "npm",
+        "name": "jest-preset-angular",
+        "data": {
+          "version": "8.1.2",
+          "files": []
+        }
+      },
+      "@nrwl/jest": {
+        "type": "npm",
+        "name": "@nrwl/jest",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "jest": {
+        "type": "npm",
+        "name": "jest",
+        "data": {
+          "version": "25.2.3",
+          "files": []
+        }
+      },
+      "@types/jest": {
+        "type": "npm",
+        "name": "@types/jest",
+        "data": {
+          "version": "25.1.4",
+          "files": []
+        }
+      },
+      "ts-jest": {
+        "type": "npm",
+        "name": "ts-jest",
+        "data": {
+          "version": "25.2.1",
+          "files": []
+        }
+      },
+      "cypress": {
+        "type": "npm",
+        "name": "cypress",
+        "data": {
+          "version": "^4.1.0",
+          "files": []
+        }
+      },
+      "@nrwl/cypress": {
+        "type": "npm",
+        "name": "@nrwl/cypress",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "@nrwl/node": {
+        "type": "npm",
+        "name": "@nrwl/node",
+        "data": {
+          "version": "9.3.0",
+          "files": []
+        }
+      },
+      "@nestjs/schematics": {
+        "type": "npm",
+        "name": "@nestjs/schematics",
+        "data": {
+          "version": "^6.7.0",
+          "files": []
+        }
+      },
+      "@nestjs/testing": {
+        "type": "npm",
+        "name": "@nestjs/testing",
+        "data": {
+          "version": "^6.8.3",
+          "files": []
+        }
+      }
+    },
+    "dependencies": {
+      "contacts-app-e2e": [
+        {
+          "type": "implicit",
+          "source": "contacts-app-e2e",
+          "target": "contacts-app"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app-e2e",
+          "target": "@nrwl/cypress"
+        }
+      ],
+      "api-interfaces": [],
+      "contacts-app": [
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "api-interfaces"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/core"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/router"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/common"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/platform-browser"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@ngrx/effects"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/material"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@ngrx/store"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "rxjs"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "lodash"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/forms"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "angularx-qrcode"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@ngrx/store-devtools"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "@angular/platform-browser-dynamic"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "zone.js"
+        },
+        {
+          "type": "static",
+          "source": "contacts-app",
+          "target": "jest-preset-angular"
+        }
+      ],
+      "api": [
+        {
+          "type": "static",
+          "source": "api",
+          "target": "api-interfaces"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "@nestjs/testing"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "@nestjs/common"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "rxjs"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "mongoose"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "@nestjs/core"
+        },
+        {
+          "type": "static",
+          "source": "api",
+          "target": "dotenv"
+        }
+      ],
+      "@angular/animations": [],
+      "@angular/cdk": [],
+      "@angular/common": [],
+      "@angular/compiler": [],
+      "@angular/core": [],
+      "@angular/forms": [],
+      "@angular/material": [],
+      "@angular/platform-browser": [],
+      "@angular/platform-browser-dynamic": [],
+      "@angular/router": [],
+      "@nestjs/common": [],
+      "@nestjs/core": [],
+      "@nestjs/platform-express": [],
+      "@ngrx/effects": [],
+      "@ngrx/entity": [],
+      "@ngrx/schematics": [],
+      "@ngrx/store": [],
+      "@ngrx/store-devtools": [],
+      "@nrwl/angular": [],
+      "@types/lodash": [],
+      "@types/mongoose": [],
+      "angularx-qrcode": [],
+      "core-js": [],
+      "lodash": [],
+      "mongoose": [],
+      "reflect-metadata": [],
+      "rxjs": [],
+      "zone.js": [],
+      "@angular/cli": [],
+      "@nrwl/workspace": [],
+      "@types/node": [],
+      "dotenv": [],
+      "ts-node": [],
+      "tslint": [],
+      "eslint": [],
+      "typescript": [],
+      "prettier": [],
+      "@nrwl/nest": [],
+      "@angular/compiler-cli": [],
+      "@angular/language-service": [],
+      "@angular-devkit/build-angular": [],
+      "codelyzer": [],
+      "jest-preset-angular": [],
+      "@nrwl/jest": [],
+      "jest": [],
+      "@types/jest": [],
+      "ts-jest": [],
+      "cypress": [],
+      "@nrwl/cypress": [],
+      "@nrwl/node": [],
+      "@nestjs/schematics": [],
+      "@nestjs/testing": []
+    }
+  },
+  "fileMap": {
+    "contacts-app-e2e": [
+      {
+        "file": "apps/contacts-app-e2e/cypress.json",
+        "ext": ".json",
+        "mtime": 1591939366276.9062
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/fixtures/example.json",
+        "ext": ".json",
+        "mtime": 1591939366277.92
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/integration/app.spec.ts",
+        "ext": ".ts",
+        "mtime": 1591939366278.3252
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/plugins/index.js",
+        "ext": ".js",
+        "mtime": 1591939366278.8052
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/support/app.po.ts",
+        "ext": ".ts",
+        "mtime": 1591939366279.3247
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/support/commands.ts",
+        "ext": ".ts",
+        "mtime": 1591939366279.6711
+      },
+      {
+        "file": "apps/contacts-app-e2e/src/support/index.ts",
+        "ext": ".ts",
+        "mtime": 1591939366279.9412
+      },
+      {
+        "file": "apps/contacts-app-e2e/tsconfig.e2e.json",
+        "ext": ".json",
+        "mtime": 1591939366277.1687
+      },
+      {
+        "file": "apps/contacts-app-e2e/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1591939366277.452
+      },
+      {
+        "file": "apps/contacts-app-e2e/tslint.json",
+        "ext": ".json",
+        "mtime": 1591939366276.542
+      }
+    ],
+    "api-interfaces": [],
+    "contacts-app": [
+      {
+        "file": "apps/contacts-app/browserslist",
+        "ext": "",
+        "mtime": 1591939366270.6516
+      },
+      {
+        "file": "apps/contacts-app/jest.config.js",
+        "ext": ".js",
+        "mtime": 1591939366275.6418
+      },
+      {
+        "file": "apps/contacts-app/proxy.conf.json",
+        "ext": ".json",
+        "mtime": 1591939366283.3616
+      },
+      {
+        "file": "apps/contacts-app/src/app/app-routing.module.ts",
+        "ext": ".ts",
+        "mtime": 1592122732743.984
+      },
+      {
+        "file": "apps/contacts-app/src/app/app.component.html",
+        "ext": ".html",
+        "mtime": 1592024500091.7568
+      },
+      {
+        "file": "apps/contacts-app/src/app/app.component.scss",
+        "ext": ".scss",
+        "mtime": 1591941772527.4612
+      },
+      {
+        "file": "apps/contacts-app/src/app/app.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1591939366274.9941
+      },
+      {
+        "file": "apps/contacts-app/src/app/app.component.ts",
+        "ext": ".ts",
+        "mtime": 1591941767117.3435
+      },
+      {
+        "file": "apps/contacts-app/src/app/app.module.ts",
+        "ext": ".ts",
+        "mtime": 1592118277920.9507
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/common.module.ts",
+        "ext": ".ts",
+        "mtime": 1592053003502.919
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.html",
+        "ext": ".html",
+        "mtime": 1592111336268.368
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.scss",
+        "ext": ".scss",
+        "mtime": 1592068969843.4966
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592022676678.4702
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/common-dialog/common-dialog.component.ts",
+        "ext": ".ts",
+        "mtime": 1592111373731.259
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.css",
+        "ext": ".css",
+        "mtime": 1592049965015.0557
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.html",
+        "ext": ".html",
+        "mtime": 1592049063716.8914
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592049063718.2878
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/confirmation-dialog/confirmation-dialog.component.ts",
+        "ext": ".ts",
+        "mtime": 1592049407070.9177
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/header/header.component.css",
+        "ext": ".css",
+        "mtime": 1592027984389.4297
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/header/header.component.html",
+        "ext": ".html",
+        "mtime": 1592114115505.876
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/header/header.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592024430135.3928
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/components/header/header.component.ts",
+        "ext": ".ts",
+        "mtime": 1592111240464.7463
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/pipes/filter-contact.pipe.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592050318511.753
+      },
+      {
+        "file": "apps/contacts-app/src/app/common/pipes/filter-contact.pipe.ts",
+        "ext": ".ts",
+        "mtime": 1592052305788.0264
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/actions/contacts.actions.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592040571439.574
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/actions/contacts.actions.ts",
+        "ext": ".ts",
+        "mtime": 1592113413995.8657
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/actions/index.ts",
+        "ext": ".ts",
+        "mtime": 1592040386149.345
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/effects/contacts.effects.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592023128348
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/effects/contacts.effects.ts",
+        "ext": ".ts",
+        "mtime": 1592116922670.0916
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/effects/index.ts",
+        "ext": ".ts",
+        "mtime": 1592040396843.7966
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/reducer/contacts.reducer.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592023133549
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/reducer/contacts.reducer.ts",
+        "ext": ".ts",
+        "mtime": 1592113674702.0369
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/reducer/index.ts",
+        "ext": ".ts",
+        "mtime": 1592040427296.4932
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/selectors/contacts.selectors.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592023929423.3718
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/selectors/contacts.selectors.ts",
+        "ext": ".ts",
+        "mtime": 1592049681786.2793
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/+state/selectors/index.ts",
+        "ext": ".ts",
+        "mtime": 1592040427296.432
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.css",
+        "ext": ".css",
+        "mtime": 1592049233800.3154
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.html",
+        "ext": ".html",
+        "mtime": 1592049407068.1362
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592049233804.4397
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/components/delete-contact/delete-contact.component.ts",
+        "ext": ".ts",
+        "mtime": 1592107488978.004
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/contacts.module.ts",
+        "ext": ".ts",
+        "mtime": 1592120227823.9722
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/contacts.service.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592041377141.0479
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/contacts.service.ts",
+        "ext": ".ts",
+        "mtime": 1592113485400.6506
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.css",
+        "ext": ".css",
+        "mtime": 1592113015523.1667
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.html",
+        "ext": ".html",
+        "mtime": 1592120257063.8875
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592052905185.892
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/list-contacts/list-contacts.component.ts",
+        "ext": ".ts",
+        "mtime": 1592118402262.2805
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.css",
+        "ext": ".css",
+        "mtime": 1592122699272.7395
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.html",
+        "ext": ".html",
+        "mtime": 1592122638570.9077
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592118124896.708
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/share-contact/share-contact.component.ts",
+        "ext": ".ts",
+        "mtime": 1592121269652.3435
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.css",
+        "ext": ".css",
+        "mtime": 1592119906014.6133
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.html",
+        "ext": ".html",
+        "mtime": 1592114774892.5032
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592052934174.147
+      },
+      {
+        "file": "apps/contacts-app/src/app/contacts/pages/view-contact/view-contact.component.ts",
+        "ext": ".ts",
+        "mtime": 1592116764935.3933
+      },
+      {
+        "file": "apps/contacts-app/src/app/store/app.reducer.ts",
+        "ext": ".ts",
+        "mtime": 1592045979981.1443
+      },
+      {
+        "file": "apps/contacts-app/src/app/store/store.module.ts",
+        "ext": ".ts",
+        "mtime": 1591941505688.4363
+      },
+      {
+        "file": "apps/contacts-app/src/assets/.gitkeep",
+        "ext": "",
+        "mtime": 1591939366272.8572
+      },
+      {
+        "file": "apps/contacts-app/src/assets/png/logo.png",
+        "ext": ".png",
+        "mtime": 1592024759674.8762
+      },
+      {
+        "file": "apps/contacts-app/src/assets/svg/plus_button.svg",
+        "ext": ".svg",
+        "mtime": 1592027193057.6143
+      },
+      {
+        "file": "apps/contacts-app/src/environments/environment.prod.ts",
+        "ext": ".ts",
+        "mtime": 1592125506544.1646
+      },
+      {
+        "file": "apps/contacts-app/src/environments/environment.ts",
+        "ext": ".ts",
+        "mtime": 1592125507569.9202
+      },
+      {
+        "file": "apps/contacts-app/src/favicon.ico",
+        "ext": ".ico",
+        "mtime": 1591943527977
+      },
+      {
+        "file": "apps/contacts-app/src/index.html",
+        "ext": ".html",
+        "mtime": 1592039702469.926
+      },
+      {
+        "file": "apps/contacts-app/src/main.ts",
+        "ext": ".ts",
+        "mtime": 1591939366271.8826
+      },
+      {
+        "file": "apps/contacts-app/src/polyfills.ts",
+        "ext": ".ts",
+        "mtime": 1591939366272.2505
+      },
+      {
+        "file": "apps/contacts-app/src/styles.scss",
+        "ext": ".scss",
+        "mtime": 1592052375714.079
+      },
+      {
+        "file": "apps/contacts-app/src/test-setup.ts",
+        "ext": ".ts",
+        "mtime": 1591939366276.1382
+      },
+      {
+        "file": "apps/contacts-app/tsconfig.app.json",
+        "ext": ".json",
+        "mtime": 1591939366270.8982
+      },
+      {
+        "file": "apps/contacts-app/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1591939366270.0332
+      },
+      {
+        "file": "apps/contacts-app/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1591939366275.8916
+      },
+      {
+        "file": "apps/contacts-app/tslint.json",
+        "ext": ".json",
+        "mtime": 1591939366271.1946
+      }
+    ],
+    "api": [
+      {
+        "file": "apps/api/jest.config.js",
+        "ext": ".js",
+        "mtime": 1591939366282.922
+      },
+      {
+        "file": "apps/api/src/app/.gitkeep",
+        "ext": "",
+        "mtime": 1591939366281.8474
+      },
+      {
+        "file": "apps/api/src/app/app.controller.spec.ts",
+        "ext": ".ts",
+        "mtime": 1591939366283.609
+      },
+      {
+        "file": "apps/api/src/app/app.controller.ts",
+        "ext": ".ts",
+        "mtime": 1592043345956.447
+      },
+      {
+        "file": "apps/api/src/app/app.module.ts",
+        "ext": ".ts",
+        "mtime": 1592043449401.3289
+      },
+      {
+        "file": "apps/api/src/app/app.service.spec.ts",
+        "ext": ".ts",
+        "mtime": 1591939366284.5398
+      },
+      {
+        "file": "apps/api/src/app/app.service.ts",
+        "ext": ".ts",
+        "mtime": 1592043089771.8948
+      },
+      {
+        "file": "apps/api/src/app/common/common.module.ts",
+        "ext": ".ts",
+        "mtime": 1592043578564.4114
+      },
+      {
+        "file": "apps/api/src/app/common/common.service.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592043454045.0698
+      },
+      {
+        "file": "apps/api/src/app/common/common.service.ts",
+        "ext": ".ts",
+        "mtime": 1592043578564.639
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.controller.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592043385440.142
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.controller.ts",
+        "ext": ".ts",
+        "mtime": 1592116238382.1106
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.module.ts",
+        "ext": ".ts",
+        "mtime": 1592044195906.3696
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.repository.ts",
+        "ext": ".ts",
+        "mtime": 1592120895083.5698
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.schema.ts",
+        "ext": ".ts",
+        "mtime": 1592121004568.2966
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.service.spec.ts",
+        "ext": ".ts",
+        "mtime": 1592043388358.2896
+      },
+      {
+        "file": "apps/api/src/app/contacts/contacts.service.ts",
+        "ext": ".ts",
+        "mtime": 1592116238382.1775
+      },
+      {
+        "file": "apps/api/src/assets/.gitkeep",
+        "ext": "",
+        "mtime": 1591939366282.088
+      },
+      {
+        "file": "apps/api/src/environments/environment.prod.ts",
+        "ext": ".ts",
+        "mtime": 1592041699927.394
+      },
+      {
+        "file": "apps/api/src/environments/environment.ts",
+        "ext": ".ts",
+        "mtime": 1592041699927.494
+      },
+      {
+        "file": "apps/api/src/main.ts",
+        "ext": ".ts",
+        "mtime": 1592124917680.779
+      },
+      {
+        "file": "apps/api/tsconfig.app.json",
+        "ext": ".json",
+        "mtime": 1591939366280.77
+      },
+      {
+        "file": "apps/api/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1591939366281.0684
+      },
+      {
+        "file": "apps/api/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1591939366283.1443
+      },
+      {
+        "file": "apps/api/tslint.json",
+        "ext": ".json",
+        "mtime": 1591939366280.4062
+      }
+    ]
+  }
+}
