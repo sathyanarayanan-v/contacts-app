@@ -16,7 +16,7 @@ export class DeleteContactComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.store
       .select(contactsQuery.getSelectedContacts)
-      .subscribe((data) => {
+      .subscribe((data:Array<string>) => {
         if (!data) {
           return;
         } else {

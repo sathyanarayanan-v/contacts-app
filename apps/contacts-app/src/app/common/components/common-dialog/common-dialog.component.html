@@ -1,8 +1,8 @@
 <div mat-mat-dialog-content class="common_dialog">
+  <div class="header">{{title}}</div>
     <div class="button_container">
         <button
         *ngIf="confirm"
-        [mat-dialog-close]="onDialogYes"
         (click)="onClick()"
         class="btn_delete pointer"
       >
@@ -12,7 +12,7 @@
       *ngIf="cancel"
       [mat-dialog-close]="onDialogYes"
       (click)="onNoClick()"
-      class="btn_delete pointer"
+      class="button_cancel pointer"
     >
       <span> {{cancel}} </span>
     </button>

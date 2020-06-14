@@ -45,7 +45,9 @@ export class ListContactsComponent implements OnInit, OnDestroy {
     this.subscription.add(sub2);
   }
   viewContact(contact: IContact) {
-    this.dialog.open(ViewContactComponent, { width: '500px', height: '500px' });
+    this.store.dispatch(ContactActions.selectContacts({ids:contact}))
+    this.dialog.open(ViewContactComponent, { width: '700px', height: '600px' ,data:{"action":"view"}});
+    
   }
   onListChecked(_id: string) {
     if (this.selected_contacts.includes(_id)) {
@@ -60,6 +62,7 @@ export class ListContactsComponent implements OnInit, OnDestroy {
   }
   updateContactClicked(contact:any) {
     this.store.dispatch(ContactActions.selectContacts({ids:contact}))
+    this.dialog.open(ViewContactComponent, { width: '700px', height: '600px' ,data:{"action":"edit"}});
   }
   deleteContacts() {
     this.store.dispatch(

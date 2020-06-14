@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../contacts/contacts.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewContactComponent } from '../../../contacts/pages/view-contact/view-contact.component';
 
 @Component({
   selector: 'contacts-app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
   onNewContactButtonClicked() {
-    // this.dialog.open()
+    this.dialog.open(ViewContactComponent, { width: '700px', height: '600px',data:{action:"create"} });
   }
   searchContacts(searchText: any) {
     this.contactService.emitSearchContactValue(

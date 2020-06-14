@@ -6,7 +6,7 @@ export const contactsFeatureKey = 'contacts';
 
 export interface ContactsState {
   contacts: Array<IContact>;
-  selectedContacts: Array<string>;
+  selectedContacts: Array<string> | IContact;
 }
 
 export const initialState: ContactsState = {

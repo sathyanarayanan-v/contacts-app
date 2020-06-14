@@ -1,0 +1,40 @@
+.btn_delete {
+  width: 130px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #1a77e8;
+  color: white;
+  border: none;
+  outline: none;
+  margin-right: 4px;
+}
+button:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+.button_container {
+  position: absolute;
+  display: flex;
+}
+.header{
+  margin-left: 40%;
+  color:black;
+  font-weight: bolder;
+}
+.button_container > button {
+  position: relative;
+  left: 12.5rem;
+  top: 32rem;
+}
+.button_cancel {
+  width: 130px;
+  height: 32px;
+  border-radius: 2px;
+  background-color: #e4e0e0;
+  color: black;
+  border: none;
+  outline: none;
+}
+.pointer {
+  cursor: pointer;
+}

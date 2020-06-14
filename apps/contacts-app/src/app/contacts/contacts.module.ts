@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DeleteContactComponent } from './components/delete-contact/delete-contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewContactComponent } from './pages/view-contact/view-contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,8 @@ import { ViewContactComponent } from './pages/view-contact/view-contact.componen
   declarations: [ListContactsComponent, DeleteContactComponent, ViewContactComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     EffectsModule.forFeature([ContactsEffects]),
     StoreModule.forFeature('contactState', contactReducer),
     ContactsAppCommonModule,
