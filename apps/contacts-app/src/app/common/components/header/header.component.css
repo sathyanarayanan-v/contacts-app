@@ -40,7 +40,8 @@ input[type='text'] {
 .plus_button {
   margin-right: 6px;
   margin-top: 0px;
-  margin-left: 25px;
+  margin-left: 19px;
+  width: 14%;
 }
 .plus_button ~ p {
   padding-top: 10px;

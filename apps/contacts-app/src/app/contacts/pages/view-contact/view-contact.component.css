@@ -16,7 +16,7 @@ label {
 }
 input {
   padding-left: 8px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-top: 8px;
   width: 300px;
   height: 42px;
@@ -29,7 +29,7 @@ input {
 .title {
   width: 300px;
 }
-.email>input{
+.email > input {
   text-transform: none !important;
 }
 textarea {
@@ -56,6 +56,6 @@ textarea {
   margin-bottom: 8px !important;
   margin-left: 39%;
 }
-.required{
-  color:red
+.required {
+  color: red;
 }

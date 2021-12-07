@@ -31,10 +31,10 @@
   margin-right: 25px;
   margin-bottom: 10px;
 }
-.contact_name{
-color:#1a73e8;
-cursor: pointer;
-text-decoration: underline;
+.contact_name {
+  color: #1a73e8;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .contacts:hover {
   border: 1px solid #1a73e8;
@@ -46,21 +46,21 @@ text-decoration: underline;
   margin-right: 3%;
 }
 .contact_name_container {
-  width: 400px;
+  width: 450px;
   margin-right: 10px;
 }
 .header_icon {
   margin-left: 4px;
 }
 .contact_email_container {
-  width: 500px;
+  width: 635px;
   margin-right: 5px;
 }
 .contact_number_container {
   width: 180px;
 }
 .action_contact_container {
-  width: 140px;
+  width: 166px;
   display: flex;
   justify-content: space-evenly;
 }
